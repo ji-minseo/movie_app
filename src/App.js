@@ -34,34 +34,49 @@ const foodILike = [
   }
 ]
 
-function Food({name, picture, rating}) {
-  return (
-    <div>
-     <h1>I like {name}</h1>
-     <h2>{rating} / 5.0</h2>
-     <img src ={picture} alt={name}/>
-    </div>
+
+class App extends React.Component {
+  constructor(props){//컴포넌트가 스크린에 표시될때 호출 -> 그리고 렌더
+    super(props);
+    console.log("hello");
+  }
+  state = {
+    count : 0
+  };
+
+  add = () => {
+    this.setState(current => ({count: current.count + 1}));
+  };
+  minus = () => {
+    this.setState(current => ({count: current.count - 1}));
+
+  };
+
+  componentDidMount(){//페이지에서 제일 처음처음에 렌더 끝낫을때 호출
+    console.log("component rendered");
+  }
+
+  componentDidUpdate(){//state 바뀔때 컴포넌트 업데이트 될때
+    console.log("updated");
+  }
+
+  componentWillUnmount(){//컴포넌트 끝날때 -> e다른 페이지로 갈때
+    console.log("bye");
+
+  }
+  render() { //처음 렌더 업데이트시 렌더 매번 하고 ->업데이트 호출
+    console.log("i am rendering");
+    return (
+      <div>
+        <img src ="https://t1.daumcdn.net/friends/www/resources/images/pc/global_ryan.gif"/>
+        <h1>Ryan is : {this.state.count}</h1>
+        <button onClick = {this.add}>Add</button>
+        <button onClick = {this.minus} >Minus</button>
+      </div>
     );
+  }
 }
 
-Food.propTypes = {
-  name : propTypes.string.isRequired,
-  picture : propTypes.string.isRequired,
-  rating : propTypes.number.isRequired
-}
 
-function App() {
-  return (
-    <div className="App">
-      {foodILike.map(dish => (
-        <Food 
-          key={dish.id} 
-          name={dish.name} 
-          rating={dish.rating} 
-          picture ={dish.image}/>
-      ))}
-    </div>
-  );
-}
 
 export default App;
