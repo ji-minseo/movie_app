@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import Movie from "./Movie";
 
 class App extends React.Component {
   state = {//나중에 쓸 변수 선언, 초기값 설정. 필수는 아님
@@ -12,7 +13,7 @@ class App extends React.Component {
       data: {
         data: {movies}
       }
-    } = await axios.get("https://yts-proxy.now.sh/list_movies.json");//api 에서 잡아온것을 변수에 넣기!
+    } = await axios.get("https://yts-proxy.now.sh/list_movies.json?sort_by=rating");//api 에서 잡아온것을 변수에 넣기!
     this.setState({ movies, isLoading: false })//movies:movies = setstate의 무비스 : axios의 무비스
     //console.log(movies); // movies.data.data.movies
   }
@@ -21,9 +22,14 @@ class App extends React.Component {
   }
 
   render() { //처음 렌더 업데이트시 렌더 매번 하고 ->업데이트 호출
-    const {isLoading} = this.state;
+    const {isLoading, movies} = this.state;
     return (
-      <div>{isLoading ? "Loading..." : "We are ready"}</div>
+      <div>{isLoading ? "Loading..." : movies.map(movie=> {
+        return (
+          <Movie key={movie.id} id={movie.id} year={movie.year} title={movie.title} summary={movie.summary} poster={movie.medium_cover_image} />
+          );
+      })}
+      </div>
     );
   }
 }
