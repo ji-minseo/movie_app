@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import "./Movie.css";
 
 //스테이트가 없어서 클래스 말고 함수만!
 function Movie({id, year, title, summary, poster}) {
@@ -8,7 +9,7 @@ function Movie({id, year, title, summary, poster}) {
         <div class="movie__poster">
             <img src={poster} alt={title} title={title} / >
         </div>
-        
+
         <div class="movie__data">
             <h3 class="movie__title">{title}</h3>
             <h5 class="movie__year">{year}</h5>

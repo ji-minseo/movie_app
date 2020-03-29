@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Movie from "./Movie";
+import "./App.css";
 
 class App extends React.Component {
   state = {//나중에 쓸 변수 선언, 초기값 설정. 필수는 아님
