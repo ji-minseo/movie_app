@@ -7,7 +7,7 @@ function Movie({id, year, title, summary, poster, genres}) {
     return (
     <div className="movies__movie">
         <div className="movie__poster">
-            <img src={poster} alt={title} title={title} / >
+            <img src={poster} alt={title} title={title} />
         </div>
 
         <div className="movie__data">
