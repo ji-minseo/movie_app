@@ -5,7 +5,7 @@ import "./Movie.css";
 //스테이트가 없어서 클래스 말고 함수만!
 function Movie({id, year, title, summary, poster, genres}) {
     return (
-    <div className="movies__movie">
+    <div className="movie">
         <div className="movie__poster">
             <img src={poster} alt={title} title={title} />
         </div>
@@ -13,7 +13,7 @@ function Movie({id, year, title, summary, poster, genres}) {
         <div className="movie__data">
             <h3 className="movie__title">{title}</h3>
             <h5 className="movie__year">{year}</h5>
-            <ul className="genres">{genres.map((genre, index) => <li key={index} className="genres__genre">{genre}</li>)}</ul>
+            <ul className="movie__genres">{genres.map((genre, index) => <li key={index} className="genres__genre">{genre}</li>)}</ul>
             <p className="movie__summary">{summary}</p>
         </div>
         
